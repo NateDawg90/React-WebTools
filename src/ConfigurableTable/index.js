@@ -16,8 +16,7 @@ class ConfigurableTable extends React.Component {
         columnHeaders: ['column 1', 'column 2', 'column 3'],
         rows: [
           ['val1', 'val2', 'val3'], 
-          ['val4', 'val5', 'val6'], 
-          ['val7', 'val8', 'val9']
+          ['val4', 'val5', 'val6']
         ],
         sortedBy: 'header1',
         order: 'asc',
@@ -81,6 +80,7 @@ class ConfigurableTable extends React.Component {
       <div>
         <form className='mb3' onSubmit={this.addHeader}>
           <TextField 
+            value={this.state.headerInput}
             id="standard-with-placeholder"
             label="New column"
             className='w-50'
@@ -114,6 +114,7 @@ class ConfigurableTable extends React.Component {
               })}
             </TableBody>
           </Table>
+          {/* for each column, have a text field below table */}
         </Paper>  
       </div>
   
