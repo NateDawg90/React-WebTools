@@ -1,7 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import TextField from '@material-ui/core/TextField';
-import { Button, CircularProgress } from '@material-ui/core';
+import { Button, CircularProgress, TextField, Card, CardContent, Typography } from '@material-ui/core';
 
 class TitleScraper extends React.Component {
   constructor(props){
@@ -24,7 +23,6 @@ class TitleScraper extends React.Component {
 
     axios.get('https://' + url).then(res => {
       if(res.status === 200) {
-        // find string enclosed within <title> and </title>
         var data = res.data;
         var startIndex, endIndex;
         for (var i = 0; i < data.length; i++) {
@@ -76,7 +74,14 @@ class TitleScraper extends React.Component {
     }
     return (
       <div>
-        <h2 className='flex justify-center'>Website Title Scraper</h2>
+        <Card className='dib' >
+          <CardContent>
+            <Typography color='secondary'>
+              <i className="fas fa-exclamation-circle mr2"></i>
+              You need to enable CORS for this to work.
+            </Typography>
+          </CardContent>
+        </Card>       
         <div>
           <form className="flex justify-between items-center mt3 grey" onSubmit={this.scrape}>
             <TextField 

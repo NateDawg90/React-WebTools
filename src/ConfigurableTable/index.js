@@ -1,14 +1,5 @@
 import React from 'react';
-import TextField from '@material-ui/core/TextField';
-import Table from '@material-ui/core/Table';
-import TableBody from '@material-ui/core/TableBody';
-import TableCell from '@material-ui/core/TableCell';
-import TableHead from '@material-ui/core/TableHead';
-import TableRow from '@material-ui/core/TableRow';
-import Paper from '@material-ui/core/Paper';
-import Chip from '@material-ui/core/Chip';
-import Fab from '@material-ui/core/Fab';
-import Avatar from '@material-ui/core/Avatar';
+import { TextField, Table, TableBody, TableCell, TableHead, TableRow, Paper, Chip, Fab, Avatar } from '@material-ui/core';
 import AddIcon from '@material-ui/icons/Add';
 import VisibilityIcon from '@material-ui/icons/Visibility';
 import _ from 'lodash';
@@ -90,7 +81,7 @@ class ConfigurableTable extends React.Component {
   addRow(e) {
     e.preventDefault();
     if (_.some(this.state.newRow, ['length', 0])) {
-      this.setState({ err: 'Assign values to all strings! '});
+      this.setState({ err: 'Assign values to all fields! '});
       return;
     }
     var rows = _.cloneDeep(this.state.rows);

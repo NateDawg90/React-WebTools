@@ -1,21 +1,17 @@
 import React, { Component } from 'react';
-import Paper from '@material-ui/core/Paper';
-import Tabs from '@material-ui/core/Tabs';
-import Tab from '@material-ui/core/Tab';
-import AppBar from '@material-ui/core/AppBar';
-import Toolbar from '@material-ui/core/Toolbar';
-import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
+import { Paper, Tabs, Tab, AppBar, Toolbar, Typography } from '@material-ui/core';
 
 import SearchResultItem from './SearchResultItem';
 import ConfigurableTable from './ConfigurableTable';
 import TitleScraper from './TitleScraper/titlescraper';
+import CurrencyConverter from './CurrencyCalculator';
+import InfoButtons from './InfoButtons';
 
 class App extends Component {
   constructor(props){
     super(props);
     this.state = {
-      activeTab: 2,
+      activeTab: 0,
     }
 
     this.handleChange = this.handleChange.bind(this);
@@ -41,14 +37,22 @@ class App extends Component {
     } else if (this.state.activeTab === 1) {
       tab = (
         <div className='w-60 center mv4'>
+          <h2 className='flex justify-center'>Website Title Scraper</h2>
           <TitleScraper />
+        </div>
+      )
+    } else if (this.state.activeTab === 2) {
+      tab = (
+        <div className='w-80 center mv4'>
+          <h2 className='flex justify-center'>Configurable Table</h2>
+          <ConfigurableTable  />
         </div>
       )
     } else {
       tab = (
         <div className='w-80 center mv4'>
-          <h2 className='flex justify-center'>Configurable Table</h2>
-          <ConfigurableTable  />
+          <h2 className='flex justify-center'>Currency Converter</h2>
+          <CurrencyConverter  />
         </div>
       )
     }
@@ -56,11 +60,11 @@ class App extends Component {
       <div className="center flex flex-column">
 
         <AppBar position="static">
-          <Toolbar>
-            <Typography variant="h6" color="inherit">
-            <Button color='inherit' href="https://www.vulcansearch.com" > Vulcan Search </Button>
-             Coding Assignment
+          <Toolbar className='flex justify-between'>
+            <Typography variant="h6" color="inherit" className='tc'>
+                Stateless Web Tools Demo
             </Typography>
+            <InfoButtons />
           </Toolbar>
         </AppBar>
 
@@ -75,6 +79,7 @@ class App extends Component {
             <Tab label="#1" />
             <Tab label="#2" />
             <Tab label="#3" />
+            <Tab label="#4" />
           </Tabs>
         </Paper>
      
